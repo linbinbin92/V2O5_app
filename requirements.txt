@@ -1,4 +1,4 @@
-detectron2==0.2.1+cpu
+detectron2==0.5+cpu
 matplotlib==3.3.4
 numpy==1.19.2
 pandas==0.24.2
