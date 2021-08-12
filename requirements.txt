@@ -13,4 +13,5 @@ torchvision==0.7.0+cpu
 
 #--find-links https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.7/index.html
 
-detectron2==0.3 -f \https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.6/index.html
+-f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.6/index.html
+detectron2==0.3
