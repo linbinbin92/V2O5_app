@@ -24,7 +24,7 @@ cfg = get_cfg()
 ##### uncomment when no GPU avail our test purposes ###########
 
 cfg.MODEL.DEVICE = 'cpu'
-cfg.OUTPUT_DIR = os.path.join(os.getcwd(), "V2O5_app\\model_results")
+cfg.OUTPUT_DIR = "model_results"
 ######################## setting####################################
 
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
