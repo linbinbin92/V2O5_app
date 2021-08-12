@@ -14,7 +14,7 @@ import seaborn as sns
 from detectron2.utils.visualizer import ColorMode, Visualizer
 from matplotlib import pyplot as plt
 import pandas as pd
-import altair as alt
+#import altair as alt
 
 # import some common detectron2 utilities
 
