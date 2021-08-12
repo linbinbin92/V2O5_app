@@ -1,5 +1,5 @@
 import os
-import cv2
+#import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from pycocotools.coco import COCO
@@ -240,7 +240,7 @@ class LoadCOCO:
         for image in self.dataset:
             diffs = []
             print(image['name'])
-            img = cv2.imread(image['name'])
+            img = plt.imread(image['name'])
             outputs = model(img)
             masks = outputs['instances'].pred_masks
             pred_masks = masks.cpu().numpy()
@@ -281,7 +281,7 @@ class LoadCOCO:
 
         """
 
-        img = cv2.imread(image)
+        img = plt.imread(image)
         outputs = model(img)
         masks = outputs['instances'].pred_masks
         masks = masks.cpu().numpy()
