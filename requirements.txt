@@ -10,3 +10,4 @@ streamlit==0.84.1
 torch==1.6.0+cpu
 torchvision==0.7.0+cpu
 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.6/index.html
+detectron2==0.3
