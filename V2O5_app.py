@@ -7,7 +7,7 @@ from PIL import Image
 from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg
-import os, cv2
+import os
 import numpy as np
 import cocomask
 import seaborn as sns
