@@ -1,4 +1,4 @@
-detectron2==0.5+cpu
+'git+https://github.com/facebookresearch/detectron2.git'
 matplotlib==3.3.4
 numpy==1.19.2
 pandas==0.24.2
