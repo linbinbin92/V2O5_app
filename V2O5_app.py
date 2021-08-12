@@ -8,7 +8,6 @@ from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg
 import os, cv2
-from predictor import VisualizationDemo
 import numpy as np
 import cocomask
 import seaborn as sns
@@ -25,7 +24,7 @@ cfg = get_cfg()
 ##### uncomment when no GPU avail our test purposes ###########
 
 cfg.MODEL.DEVICE = 'cpu'
-cfg.OUTPUT_DIR = "./model_results/"
+cfg.OUTPUT_DIR = os.path.join(os.getcwd(), "V2O5_app\\model_results")
 ######################## setting####################################
 
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
@@ -82,8 +81,8 @@ if uploaded_file is not None:
     st.image(uploaded_file)
 
     im = Image.open(uploaded_file)
-    im = np.array(im)  # pil to cv
-    im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+    im = np.array(im.convert("RGB"))  # pil to cv
+    #im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
 else:
     st.warning('Please upload a image.')
 
