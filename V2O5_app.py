@@ -11,21 +11,47 @@ import os
 import numpy as np
 import cocomask
 import seaborn as sns
-from detectron2.utils.visualizer import ColorMode, Visualizer
+#from detectron2.utils.visualizer import ColorMode, Visualizer
 from matplotlib import pyplot as plt
 import pandas as pd
-#import altair as alt
+import shutil
+from pathlib import Path
+import urllib.request
+import requests
 
-# import some common detectron2 utilities
 
+
+DEFAULT_MODEL_BASE_DIR = 'model_results'
+MODEL_WEIGHTS = f'{DEFAULT_MODEL_BASE_DIR}/model_final.pth'
+MODEL_WEIGHTS_DEPLOYMENT_URL = 'https://github.com/linbinbin92/V2O5_app/releases/download/V0.1-alpha/model_final.pth'
+
+def download_file(url, local_filename):
+    with requests.get(url, stream=True) as r:
+        with open(local_filename, 'wb') as f:
+            shutil.copyfileobj(r.raw, f)
+    return local_filename
+
+@st.cache
+def ensure_model_exists():
+
+    save_dest = Path(DEFAULT_MODEL_BASE_DIR)
+    save_dest.mkdir(exist_ok=True)
+
+    f_checkpoint = Path(MODEL_WEIGHTS)
+
+    if not f_checkpoint.exists():
+        with st.spinner("Downloading model weights... this may take up to a few minutes. (~150 MB) Please don't interrupt it."):
+            download_file(url=MODEL_WEIGHTS_DEPLOYMENT_URL, local_filename=MODEL_WEIGHTS)
+
+handle = ensure_model_exists()
+
+######################## setting####################################
 setup_logger()
 ##########Config file###################################
 cfg = get_cfg()
 ##### uncomment when no GPU avail our test purposes ###########
-
 cfg.MODEL.DEVICE = 'cpu'
-cfg.OUTPUT_DIR = "model_results"
-######################## setting####################################
+
 
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
 cfg.DATASETS.TRAIN = ("Fiber_Train_new_360",)
@@ -42,7 +68,9 @@ cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1  #
 
 cfg.INPUT.MASK_FORMAT = "bitmask"
 # cfg.DATALOADER.FILTER_EMPTY_ANNOTATIONS =  False
-cfg.MODEL.WEIGHTS = os.path.join(cfg.OUTPUT_DIR, "model_final.pth")  # path to the model we just trained
+#cfg.MODEL.WEIGHTS = os.path.join(cfg.OUTPUT_DIR, "model_final.pth")  # path to the model we just trained
+#cfg.MODEL.WEIGHTS = r"C:\Users\linbi\PycharmProjects\pythonProject\git_v2o5\model_results\model_final.pth"
+cfg.MODEL.WEIGHTS = MODEL_WEIGHTS
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # set a custom testing threshold
 predictor = DefaultPredictor(cfg)
 
@@ -83,8 +111,30 @@ if uploaded_file is not None:
     im = Image.open(uploaded_file)
     im = np.array(im.convert("RGB"))  # pil to cv
     #im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
+
 else:
-    st.warning('Please upload a image.')
+    st.warning('Please upload a image or choose some provided images.')
+
+    input_image = st.sidebar.selectbox('Demo Images', ('Ptychography', 'STXM','SEM'))
+
+    if input_image == 'Ptychography':
+        img_file = os.path.join('git_v2o5','sample_image','Ptychography.png').replace("\\","/")
+        st.image(img_file)
+        im = Image.open(img_file)
+        im = np.array(im.convert("RGB"))
+
+    elif input_image == 'STXM':
+        img_file = os.path.join('git_v2o5','sample_image','STXM.png').replace("\\","/")
+        st.image(img_file)
+        im = Image.open(img_file)
+        im = np.array(im.convert("RGB"))
+
+    elif input_image == 'SEM':
+        img_file = os.path.join('git_v2o5','sample_image','SEM_.png').replace("\\","/")
+        st.image(img_file)
+        im = Image.open(img_file)
+        im = np.array(im.convert("RGB"))
+
 
 run_ = st.sidebar.button('Start image analysis')
 
