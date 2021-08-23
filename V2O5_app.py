@@ -75,7 +75,7 @@ cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # set a custom testing threshold
 predictor = DefaultPredictor(cfg)
 
 
-col1, mid, col2 = st.beta_columns([25,1,2])
+col1, mid, col2 = st.columns([25,1,2])
 with col1:
     #st.markdown('<h1 style="color: black;">V2O5 Detector: a Data-driven model</h1>',
     #                        unsafe_allow_html=True)
