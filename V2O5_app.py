@@ -118,19 +118,19 @@ else:
     input_image = st.sidebar.selectbox('Demo Images', ('Ptychography', 'STXM','SEM'))
 
     if input_image == 'Ptychography':
-        img_file = os.path.join('git_v2o5','sample_image','Ptychography.png').replace("\\","/")
+        img_file = os.path.join('sample_image','Ptychography.png').replace("\\","/")
         st.image(img_file)
         im = Image.open(img_file)
         im = np.array(im.convert("RGB"))
 
     elif input_image == 'STXM':
-        img_file = os.path.join('git_v2o5','sample_image','STXM.png').replace("\\","/")
+        img_file = os.path.join('sample_image','STXM.png').replace("\\","/")
         st.image(img_file)
         im = Image.open(img_file)
         im = np.array(im.convert("RGB"))
 
     elif input_image == 'SEM':
-        img_file = os.path.join('git_v2o5','sample_image','SEM_.png').replace("\\","/")
+        img_file = os.path.join('sample_image','SEM_.png').replace("\\","/")
         st.image(img_file)
         im = Image.open(img_file)
         im = np.array(im.convert("RGB"))
