@@ -31,7 +31,7 @@ def download_file(url, local_filename):
             shutil.copyfileobj(r.raw, f)
     return local_filename
 
-@st.cache
+#@st.cache
 def ensure_model_exists():
 
     save_dest = Path(DEFAULT_MODEL_BASE_DIR)
