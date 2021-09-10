@@ -184,5 +184,5 @@ with st.sidebar:
     st.text("")
 
     """
-    #### :desktop_computer: [Source code in Github](https://github.com/linbinbin92)
+    #### :desktop_computer: [Source code in Github](https://github.com/linbinbin92/V2O5_app/tree/master)
     """
