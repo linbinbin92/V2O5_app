@@ -93,8 +93,7 @@ st.markdown('---')
 st.write("""
 ## This web-based interative tool provide a deep-learning-based *image* analysis on the fly.
 - To use the model, upload the image and select the functionality.
-- For further information how the model works and was trained see:  [arXiv Doi](https://arxiv.org/abs/2109.04429) and if you use this tool for your research, please cite:  [arXiv/xxx](https://github.com/linbinbin92)
-
+- For further information how the model works and was trained see: [our paper](https://arxiv.org/abs/2109.04429) and if you use this tool for your research, please cite this too.
 """)
 st.markdown('---')
 
