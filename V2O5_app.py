@@ -61,7 +61,7 @@ cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(
     "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")  # Let training initialize from model zoo
 cfg.SOLVER.IMS_PER_BATCH = 8
 cfg.SOLVER.BASE_LR = 0.02 / 16 * cfg.SOLVER.IMS_PER_BATCH  # pick a good LR
-cfg.SOLVER.MAX_ITER = 16000  # 300 iterations seems good enough for this toy dataset; you will need to train longer for a practical dataset
+cfg.SOLVER.MAX_ITER = 16000
 cfg.SOLVER.STEPS = []  # do not decay learning rate
 cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512  # faster, and good enough for this toy dataset (default: 512)
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1  #
@@ -93,7 +93,7 @@ st.markdown('---')
 st.write("""
 ## This web-based interative tool provide a deep-learning-based *image* analysis on the fly.
 - To use the model, upload the image and select the functionality.
-- For further information how the model works and was trained see: [our paper](https://arxiv.org/abs/2109.04429) and if you use this tool for your research, please cite this too.
+- For further information how the model works and was trained please see [our paper](https://arxiv.org/abs/2109.04429) and if you use this tool for your research, please cite correspondingly.
 """)
 st.markdown('---')
 
