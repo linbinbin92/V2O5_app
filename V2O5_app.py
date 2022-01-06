@@ -74,8 +74,11 @@ cfg.MODEL.WEIGHTS = MODEL_WEIGHTS
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # set a custom testing threshold
 
 @st.cache
-predictor = DefaultPredictor(cfg)
+def load_model()
+	predictor = DefaultPredictor(cfg)
+	return predictor
 
+predictor =  load_model()
 
 col1, mid, col2 = st.columns([25,1,2])
 with col1:
