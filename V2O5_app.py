@@ -57,8 +57,8 @@ cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rc
 cfg.DATASETS.TRAIN = ("Fiber_Train_new_360",)
 cfg.DATASETS.TEST = ("Fiber_Val_new_40",)
 cfg.DATALOADER.NUM_WORKERS = 4
-cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(
-    "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")  # Let training initialize from model zoo
+#cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(
+#    "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")  # Let training initialize from model zoo
 cfg.SOLVER.IMS_PER_BATCH = 8
 cfg.SOLVER.BASE_LR = 0.02 / 16 * cfg.SOLVER.IMS_PER_BATCH  # pick a good LR
 cfg.SOLVER.MAX_ITER = 16000
@@ -72,6 +72,8 @@ cfg.INPUT.MASK_FORMAT = "bitmask"
 #cfg.MODEL.WEIGHTS = r"C:\Users\linbi\PycharmProjects\pythonProject\git_v2o5\model_results\model_final.pth"
 cfg.MODEL.WEIGHTS = MODEL_WEIGHTS
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # set a custom testing threshold
+
+@st.cache
 predictor = DefaultPredictor(cfg)
 
 
