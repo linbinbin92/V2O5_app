@@ -109,9 +109,11 @@ if uploaded_file is not None:
     #    img = resizeimg(uploaded_file)
 
     st.write("""This is how your image looks like: """)
-    st.image(uploaded_file)
+    #st.image(uploaded_file)
 
     im = Image.open(uploaded_file)
+    st.image(im)
+
     im = np.array(im.convert("RGB"))  # pil to cv
     #im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
 
