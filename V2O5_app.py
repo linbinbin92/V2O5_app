@@ -53,6 +53,8 @@ cfg = get_cfg()
 cfg.MODEL.DEVICE = 'cpu'
 
 
+
+######Some training setting######### 
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
 cfg.DATASETS.TRAIN = ("Fiber_Train_new_360",)
 cfg.DATASETS.TEST = ("Fiber_Val_new_40",)
@@ -96,14 +98,15 @@ with col2:
 #st.write("""# Data-driven model by MFM """)
 st.markdown('---')
 st.write("""
-## This web-based interative tool provide a deep-learning-based *image* analysis on the fly.
-- To use the model, upload the image and select the functionality.
-- For further information how the model works and was trained please see [our paper](https://arxiv.org/abs/2109.04429) and if you use this tool for your research, please cite correspondingly.
-""")
+## This web-based interative tool provides a deep-learning-based *image* analysis for nanowires on the fly.
+- To use the tool, upload the image and select the functionality.
+- For further information how the deep learning model works and was trained, please see [our pre-print paper](https://arxiv.org/abs/2109.04429) and if you use/find this tool useful for your research, please cite our paper correspondingly.
+- For any possible issues or suggestions, please open a ticket in the github page.  
+ """)
 st.markdown('---')
 
 # Collects user input features into dataframe
-uploaded_file = st.sidebar.file_uploader("Upload your input image file", type=["png", "jfif", "tif"])
+uploaded_file = st.sidebar.file_uploader("Upload your input image file", type=["png",'jpeg' "tif"])
 
 if uploaded_file is not None:
     #    img = resizeimg(uploaded_file)
@@ -118,7 +121,7 @@ if uploaded_file is not None:
     #im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
 
 else:
-    st.warning('Please upload a image or choose some provided images.')
+    st.warning('Please upload a image or choose some provided images, in case your provided image is not shown properly, snip it to .png and try again.')
 
     input_image = st.sidebar.selectbox('Demo Images', ('Ptychography', 'STXM','SEM'))
 
