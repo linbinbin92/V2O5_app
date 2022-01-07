@@ -106,7 +106,7 @@ st.write("""
 st.markdown('---')
 
 # Collects user input features into dataframe
-uploaded_file = st.sidebar.file_uploader("Upload your input image file", type=["png",'jpeg' "tif"])
+uploaded_file = st.sidebar.file_uploader("Upload your input image file", type=["png",'jpeg',"tif"])
 
 if uploaded_file is not None:
     #    img = resizeimg(uploaded_file)
