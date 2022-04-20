@@ -122,7 +122,7 @@ if uploaded_file is not None:
     #im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
 
 else:
-    st.warning('Please upload a image or choose some provided images, in case your provided image is not shown properly, snip it to .png and try again.')
+    st.warning('Please upload an image or choose one of provided test images. In case your own image is not shown properly, snip it to .png and try again.')
 
     input_image = st.sidebar.selectbox('Demo Images', ('Ptychography', 'STXM','SEM'))
 
