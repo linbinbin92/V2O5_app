@@ -100,7 +100,8 @@ st.markdown('---')
 st.write("""
 ## This web-based interative tool provides a deep-learning-based *image* analysis for nanowires on the fly.
 - To use the tool, upload the image and select the functionality.
-- For further information how the deep learning model works and was trained, please see [our pre-print paper](https://arxiv.org/abs/2109.04429) and if you use/find this tool useful for your research, please cite our paper correspondingly.
+- For further information how the deep learning model works and was trained, please see [our pre-print paper](https://arxiv.org/abs/2109.04429) and if you use/find this tool and the training data useful for your research, please cite our paper correspondingly.
+- Training dataset has been published at: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6469773.svg)](https://doi.org/10.5281/zenodo.6469773)
 - For any possible issues or suggestions, please open a ticket in the github page.  
  """)
 st.markdown('---')
