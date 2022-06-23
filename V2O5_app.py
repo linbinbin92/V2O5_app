@@ -197,8 +197,8 @@ if run_download_:
 
 
 
-   df = pd.merge(width, heigth, area, orientation, right_index = True,
-               left_index = True)
+   #df = pd.merge(width, heigth, area, orientation, right_index = True,left_index = True)
+   df = width
    csv = convert_df(df)
    st.dowload_button("Dowload the statistics", csv,   "statistics.csv", "text/csv",key='browser-data')
 
