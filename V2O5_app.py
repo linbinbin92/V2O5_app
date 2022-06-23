@@ -196,7 +196,7 @@ def convert_df(df):
 if down_load_csv_:
 
    df = pd.merge(width, heigth, area, orientation, right_index = True,
-               left_index = True)width
+               left_index = True)
    csv = convert_df(df)
 
 
