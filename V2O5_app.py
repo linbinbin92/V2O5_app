@@ -185,6 +185,21 @@ if rund_statstics_:
     sns.distplot(orientation, bins = 20,label='Orientation',  kde=True, ax=axes[3])
 
     st.pyplot(f)
+
+down_load_csv_ = st.download_button("Download as CSV", csv, "statistics.csv", key = "browser-data" )
+
+
+
+def convert_df(df):
+    return df.to_csv().encode('utf-8')
+
+if down_load_csv_:
+
+   df = pd.merge(width, heigth, area, orientation, right_index = True,
+               left_index = True)width
+   csv = convert_df(df)
+
+
 else:
     pass
 
