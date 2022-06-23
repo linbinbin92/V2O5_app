@@ -211,7 +211,7 @@ if run_download_:
 
     df = width.to_frame()
     csv = convert_df(df)
-    st.dowload_button("Dowload the statistics", csv,   "statistics.csv", "text/csv",key='browser-data')
+    st.dowload_button("Dowload the statistics", csv)
 
 
 with st.sidebar:
