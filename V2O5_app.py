@@ -209,7 +209,7 @@ if run_download_:
     orientation = pd.Series(orientation, name="orientation")
 
 
-    df = widh.to_frame()
+    df = width.to_frame()
     csv = convert_df(df)
     st.dowload_button("Dowload the statistics", csv,   "statistics.csv", "text/csv",key='browser-data')
 
