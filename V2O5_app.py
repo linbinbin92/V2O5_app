@@ -207,7 +207,9 @@ if run_download_:
     height = pd.Series(height, name="height")
     area = pd.Series(area, name="area")
     orientation = pd.Series(orientation, name="orientation")
-    df =  width
+
+
+    df = widh.to_frame()
     csv = convert_df(df)
     st.dowload_button("Dowload the statistics", csv,   "statistics.csv", "text/csv",key='browser-data')
 
