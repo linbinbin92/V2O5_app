@@ -192,7 +192,7 @@ run_download_ = st.sidebar.button("Enable dowload option")
 if run_download_:
 
    #@st.cache
-   def convert_df(df):
+    def convert_df(df):
        return df.to_csv().encode('utf-8')
 
 
@@ -201,7 +201,7 @@ if run_download_:
 
     number, width, height, area, orientation = cocomask.stats(predictor, im)
     number = list(number)
-    st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
+    #st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
     width = pd.Series(width, name="width")
     height = pd.Series(height, name="height")
