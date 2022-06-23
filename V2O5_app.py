@@ -186,7 +186,8 @@ if rund_statstics_:
 
     st.pyplot(f)
 
-
+else:
+    pass
 
 
 @st.cache
@@ -202,9 +203,6 @@ st.dowload_button("Dowload the statistics", csv,   "statistics.csv",
     "text/csv",
     key='browser-data')
 
-
-else:
-    pass
 
 with st.sidebar:
 
