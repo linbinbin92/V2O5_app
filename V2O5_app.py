@@ -89,7 +89,7 @@ with col1:
     st.write("""# V2O5 Detector: a synthetic data-driven deep learning model """)
 
 with col2:
-    st.image('logo_mfm.png', width=120)
+    st.image('logo_mfm.png', width=140)
 
     #st.write('V2O5 Detector, a Data-driven model by MFM')
 
