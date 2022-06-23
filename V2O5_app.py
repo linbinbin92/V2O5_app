@@ -53,12 +53,14 @@ cfg = get_cfg()
 cfg.MODEL.DEVICE = 'cpu'
 
 
+
+######Some training setting######### 
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
 cfg.DATASETS.TRAIN = ("Fiber_Train_new_360",)
 cfg.DATASETS.TEST = ("Fiber_Val_new_40",)
 cfg.DATALOADER.NUM_WORKERS = 4
-cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(
-    "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")  # Let training initialize from model zoo
+#cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url(
+#    "COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")  # Let training initialize from model zoo
 cfg.SOLVER.IMS_PER_BATCH = 8
 cfg.SOLVER.BASE_LR = 0.02 / 16 * cfg.SOLVER.IMS_PER_BATCH  # pick a good LR
 cfg.SOLVER.MAX_ITER = 16000
@@ -72,8 +74,13 @@ cfg.INPUT.MASK_FORMAT = "bitmask"
 #cfg.MODEL.WEIGHTS = r"C:\Users\linbi\PycharmProjects\pythonProject\git_v2o5\model_results\model_final.pth"
 cfg.MODEL.WEIGHTS = MODEL_WEIGHTS
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # set a custom testing threshold
-predictor = DefaultPredictor(cfg)
 
+@st.cache
+def load_model():
+	predictor = DefaultPredictor(cfg)
+	return predictor
+
+predictor =  load_model()
 
 col1, mid, col2 = st.columns([25,1,2])
 with col1:
@@ -91,27 +98,31 @@ with col2:
 #st.write("""# Data-driven model by MFM """)
 st.markdown('---')
 st.write("""
-## This web-based interative tool provide a deep-learning-based *image* analysis on the fly.
-- To use the model, upload the image and select the functionality.
-- For further information how the model works and was trained please see [our paper](https://arxiv.org/abs/2109.04429) and if you use this tool for your research, please cite correspondingly.
-""")
+## This web-based interative tool provides a deep-learning-based *image* analysis for nanowires on the fly.
+- To use the tool, upload the image and select the functionality.
+- For further information how the deep learning model works and was trained, please see [our article](https://www.nature.com/articles/s41524-022-00767-x). If you use/find this tool and the training data useful for your research, please cite our paper correspondingly.
+- Training dataset has been published at: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6469773.svg)](https://doi.org/10.5281/zenodo.6469773)
+- For any possible issues or suggestions, please open a ticket in the github page.  
+ """)
 st.markdown('---')
 
 # Collects user input features into dataframe
-uploaded_file = st.sidebar.file_uploader("Upload your input image file", type=["png", "jfif", "tif"])
+uploaded_file = st.sidebar.file_uploader("Upload your input image file", type=["png",'jpeg',"tif"])
 
 if uploaded_file is not None:
     #    img = resizeimg(uploaded_file)
 
     st.write("""This is how your image looks like: """)
-    st.image(uploaded_file)
+    #st.image(uploaded_file)
 
     im = Image.open(uploaded_file)
+    st.image(im)
+
     im = np.array(im.convert("RGB"))  # pil to cv
     #im = cv2.cvtColor(im, cv2.COLOR_RGB2BGR)
 
 else:
-    st.warning('Please upload a image or choose some provided images.')
+    st.warning('Please upload an image or choose one of provided test images. In case your own image is not shown properly, snip it to .png and try again.')
 
     input_image = st.sidebar.selectbox('Demo Images', ('Ptychography', 'STXM','SEM'))
 
