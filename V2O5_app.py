@@ -186,22 +186,21 @@ if rund_statstics_:
 
     st.pyplot(f)
 
-else:
-    pass
+
+run_download_ = st.sidebar.button("Enable dowload option")
+
+if run_download_:
+
+   @st.cache
+   def convert_df(df):
+       return df.to_csv().encode('utf-8')
 
 
-@st.cache
-def convert_df(df):
-    return df.to_csv().encode('utf-8')
 
-
-
-df = pd.merge(width, heigth, area, orientation, right_index = True,
+   df = pd.merge(width, heigth, area, orientation, right_index = True,
                left_index = True)
-csv = convert_df(df)
-st.dowload_button("Dowload the statistics", csv,   "statistics.csv",
-    "text/csv",
-    key='browser-data')
+   csv = convert_df(df)
+   st.dowload_button("Dowload the statistics", csv,   "statistics.csv", "text/csv",key='browser-data')
 
 
 with st.sidebar:
