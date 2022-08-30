@@ -206,10 +206,7 @@ if run_download_:
     #st.write("""{},{} """.format(height,width))
     aspect_ratio = [i / j for i,j in zip(height,width)]
 
-    data = np.asarray([width, height, area, orientation, aspect_ratio])
-    st.write("""{}""".format(data))
-    st.write("""{}""".format(np.size(data)))
-    st.write("""{}""".format(np.type(data)))
+    data = list(zip(width, height, area, orientation, aspect_ratio))
     df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio"])
 
     #width = pd.Series(width, name="width")
