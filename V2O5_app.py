@@ -201,15 +201,17 @@ if run_download_:
 
     number, width, height, area, orientation = cocomask.stats(predictor, im)
     number = list(number)
-    #st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
+    st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
     width = pd.Series(width, name="width")
     height = pd.Series(height, name="height")
     area = pd.Series(area, name="area")
     orientation = pd.Series(orientation, name="orientation")
 
-    df = pd.merge(width, heigth, area, orientation, right_index = True,left_index = True)
-    df = df.to_frame()
+    #df = pd.merge(width, heigth, area, orientation, right_index = True,left_index = True)
+    df = width
+
+    #df = df.to_frame()
     csv = convert_df(df)
     st.download_button("Download the statistics", csv)
 
