@@ -203,7 +203,7 @@ if run_download_:
     number = list(number)
     st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
-    st.write("""{},{} """.format(height,width))
+    #st.write("""{},{} """.format(height,width))
     aspect_ratio = [i / j for i,j in zip(height,width)]
 
     data = np.asarray([width, height, area, orientation, aspect_ratio])
@@ -219,7 +219,7 @@ if run_download_:
 
     #df = df.to_frame()
     #csv = convert_df(df)
-    df_to_csv(index=False)
+    df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
 
 
