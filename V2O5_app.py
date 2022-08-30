@@ -204,9 +204,9 @@ if run_download_:
     st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
     st.write("""{},{} """.format(height,width))
-    #aspect_ratio = height/width
+    aspect_ratio = [i / j for i,j in zip(height,width)]
 
-    data = [width, heigt, area, orientation, aspect_ratio]
+    data = np.array([width, heigt, area, orientation, aspect_ratio])
     df =  pd.DataFrame(data = data, columns =["width", "heigth", "area", "orientation", "aspect_ratio"])
 
     #width = pd.Series(width, name="width")
