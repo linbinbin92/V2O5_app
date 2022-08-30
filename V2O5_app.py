@@ -208,6 +208,8 @@ if run_download_:
 
     data = np.asarray([width, height, area, orientation, aspect_ratio])
     st.write("""{}""".format(data))
+    st.write("""{}""".format(np.size(data)))
+    st.write("""{}""".format(np.type(data)))
     df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio"])
 
     #width = pd.Series(width, name="width")
