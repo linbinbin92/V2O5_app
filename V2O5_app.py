@@ -208,10 +208,10 @@ if run_download_:
     area = pd.Series(area, name="area")
     orientation = pd.Series(orientation, name="orientation")
 
-
-    df = width.to_frame()
+    df = pd.merge(width, heigth, area, orientation, right_index = True,left_index = True)
+    #df = df.to_frame()
     csv = convert_df(df)
-    st.dowload_button("Dowload the statistics", csv)
+    st.download_button("Download the statistics", csv)
 
 
 with st.sidebar:
