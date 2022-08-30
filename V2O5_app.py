@@ -208,7 +208,7 @@ if run_download_:
     data = list(zip(width, height, area, orientation, aspect_ratio))
     df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio"])
 
-    csv = df.to_csv(index=True)
+    csv = df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
 
 
