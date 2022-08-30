@@ -187,7 +187,7 @@ if rund_statstics_:
     st.pyplot(f)
 
 
-run_download_ = st.sidebar.button("Enable dowload option")
+run_download_ = st.sidebar.button("Enable download option")
 
 if run_download_:
 
@@ -209,7 +209,7 @@ if run_download_:
     orientation = pd.Series(orientation, name="orientation")
 
     df = pd.merge(width, heigth, area, orientation, right_index = True,left_index = True)
-    #df = df.to_frame()
+    df = df.to_frame()
     csv = convert_df(df)
     st.download_button("Download the statistics", csv)
 
