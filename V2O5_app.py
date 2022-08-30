@@ -219,7 +219,7 @@ if run_download_:
 
     #df = df.to_frame()
     #csv = convert_df(df)
-    df.to_csv(index=False)
+    csv = df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
 
 
