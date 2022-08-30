@@ -202,7 +202,9 @@ if run_download_:
     number, width, height, area, orientation = cocomask.stats(predictor, im)
     number = list(number)
     st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
-    aspect_ratio = height/width
+
+    st.write("""{},{} """.format(height,width))
+    #aspect_ratio = height/width
 
     data = [width, heigt, area, orientation, aspect_ratio]
     df =  pd.DataFrame(data = data, columns =["width", "heigth", "area", "orientation", "aspect_ratio"])
