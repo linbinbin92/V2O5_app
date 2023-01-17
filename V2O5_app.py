@@ -18,7 +18,7 @@ import shutil
 from pathlib import Path
 import urllib.request
 import requests
-
+import is
 
 
 DEFAULT_MODEL_BASE_DIR = 'model_results'
@@ -191,7 +191,6 @@ run_download_ = st.sidebar.button("Enable download option")
 
 if run_download_:
 
-   #@st.cache
     def convert_df(df):
        return df.to_csv().encode('utf-8')
 
@@ -210,7 +209,9 @@ if run_download_:
 
     csv = df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
-
+    with io.ByteIO() as buffer:
+    np.save(buffer, masks)
+    btn = st.download_button(label = "Download masks (.npy)"), data=buffer, file_name="particle_masks.npy"
 
 with st.sidebar:
 
