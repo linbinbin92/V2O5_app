@@ -211,7 +211,7 @@ if run_download_:
     st.download_button("Download the statistics", csv)
 
     st.image(masks[:,:,0])
-    with io.ByteIO() as buffer:
+    with io.BytesIO() as buffer:
         np.save(buffer, masks)
         btn = st.download_button(label = "Download masks (.npy)", data=buffer, file_name="particle_masks.npy")
 
