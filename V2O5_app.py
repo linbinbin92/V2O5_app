@@ -18,7 +18,7 @@ import shutil
 from pathlib import Path
 import urllib.request
 import requests
-import is
+import io
 
 
 DEFAULT_MODEL_BASE_DIR = 'model_results'
