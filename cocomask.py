@@ -87,20 +87,18 @@ def stats(predictor,image):
     area_cvs = []
     for i in range(masks.shape[0]):
         mask = masks[i, :, :]
-	contours, hierarchy = cv.findContours(image=mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
-	cnt=contours[0]
+        contours, hierarchy = cv.findContours(image=mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
+        cnt=contours[0]
         perimeter = cv.arcLength(mask, True)
-  	is_convex = cv.isContourConvex(mask)
-	area_cv =  cv.contourArea(mask)
-	are=np.sum(mask != 0)
-	
-	width.append(min(wdth, hght))
+        is_convex = cv.isContourConvex(mask)
+        area_cv =  cv.contourArea(mask)
+        are=np.sum(mask != 0)
+        width.append(min(wdth, hght))
         height.append(max(wdth, hght))
         orientation.append(orien)
         area.append(are)
-	area_cvs.append(area_cv)
-	perimeters.append(perimeter)
-	
+        area_cvs.append(area_cv)
+        perimeters.append(perimeter)
 
     return number,width, height, area, orientation,area_cvs,perimeters,masks
 
