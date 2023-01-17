@@ -9,6 +9,6 @@ streamlit
 # Torch
 --find-links https://download.pytorch.org/whl/torch_stable.html
 torch==1.8.0+cpu
-torchvision==0.8.0+cpu
+torchvision==0.8.2+cpu
 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.8/index.html
 detectron2==0.3
