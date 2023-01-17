@@ -210,8 +210,8 @@ if run_download_:
     csv = df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
     with io.ByteIO() as buffer:
-    np.save(buffer, masks)
-    btn = st.download_button(label = "Download masks (.npy)"), data=buffer, file_name="particle_masks.npy"
+        np.save(buffer, masks)
+        btn = st.download_button(label = "Download masks (.npy)"), data=buffer, file_name="particle_masks.npy")
 
 with st.sidebar:
 
