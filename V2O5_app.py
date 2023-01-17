@@ -213,7 +213,7 @@ if run_download_:
     st.image(masks[:,:,0])
     with io.ByteIO() as buffer:
         np.save(buffer, masks)
-        btn = st.download_button(label = "Download masks (.npy)"), data=buffer, file_name="particle_masks.npy")
+        btn = st.download_button(label = "Download masks (.npy)", data=buffer, file_name="particle_masks.npy")
 
 with st.sidebar:
 
