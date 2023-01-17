@@ -204,8 +204,8 @@ if run_download_:
 
     aspect_ratio = [i / j for i,j in zip(height,width)]
 
-    data = list(zip(width, height, area, orientation, aspect_ratio, area_cvs, perimeters))
-    df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio", "area_cvs", "perimeters"])
+    data = list(zip(width, height, area, orientation, aspect_ratio))
+    df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio"])
 
     csv = df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
