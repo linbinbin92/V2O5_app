@@ -8,7 +8,7 @@ seaborn==0.11.1
 streamlit
 # Torch
 --find-links https://download.pytorch.org/whl/torch_stable.html
-torch==1.6.0+cpu
-torchvision==0.7.0+cpu
--f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.6/index.html
+torch==1.8.0+cpu
+torchvision==0.8.0+cpu
+-f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.8/index.html
 detectron2==0.3
