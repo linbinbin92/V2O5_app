@@ -1,5 +1,5 @@
 import os
-#import cv2
+import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 from pycocotools.coco import COCO
@@ -77,25 +77,32 @@ def stats(predictor,image):
     predictions = predictor(image)
     masks = predictions['instances'].pred_masks
     masks = masks.cpu().numpy()
-
     number = masks.shape
     width = []
     height = []
     orientation = []
     area = []
+    perimeters = []
+    is_convexs = []
+    area_cvs = 
     for i in range(masks.shape[0]):
         mask = masks[i, :, :]
-        rot, orien = rotate_image(mask)
-        bbox = extract_bboxes(rot)
-        bbox = bbox[0]
-        wdth = abs(bbox[0] - bbox[1])
-        hght = abs(bbox[2] - bbox[3])
-        are = np.sum(mask != 0)
-        width.append(min(wdth, hght))
+	contours, hierarchy = cv.findContours(image=mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
+	cnt=contours[0]
+        perimeter = cv.arcLength(mask, True)
+  	is_convex = cv.isContourConvex(mask)
+	area_cv =  cv.contourArea(mask)
+	are=np.sum(mask != 0)
+	
+	width.append(min(wdth, hght))
         height.append(max(wdth, hght))
         orientation.append(orien)
         area.append(are)
-    return number,width, height, area, orientation
+	area_cvs.append(area_cv)
+	perimeters.append(perimeter)
+	
+
+    return number,width, height, area, orientation,area_cvs,perimeters,masks
 
 def visualize_prediction(predictor,image):
 
@@ -306,7 +313,7 @@ class LoadCOCO:
 
     def ground_prop(self):
         """
-        calculate the properties of objectsin the grounf truth image and add them to each image in self.dataset
+        calculate the properties of objects in the ground truth image and add them to each image in self.dataset
         """
         for image in self.dataset:
             masks = image['instance']
