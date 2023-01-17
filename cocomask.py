@@ -93,6 +93,8 @@ def stats(predictor,image):
         #is_convex = cv.isContourConvex(mask)
         #area_cv =  cv.contourArea(mask)
         rot, orien = rotate_image(mask)
+        bbox = extract_bboxes(rot)
+        bbox = bbox[0]
         wdth = abs(bbox[0] - bbox[1])
         hght = abs(bbox[2] - bbox[3])
         are=np.sum(mask != 0)
