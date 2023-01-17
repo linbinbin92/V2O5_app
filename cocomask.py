@@ -92,6 +92,9 @@ def stats(predictor,image):
         #perimeter = cv.arcLength(mask, True)
         #is_convex = cv.isContourConvex(mask)
         #area_cv =  cv.contourArea(mask)
+        rot, orien = rotate_image(mask)
+        wdth = abs(bbox[0] - bbox[1])
+        hght = abs(bbox[2] - bbox[3])
         are=np.sum(mask != 0)
         width.append(min(wdth, hght))
         height.append(max(wdth, hght))
@@ -100,7 +103,7 @@ def stats(predictor,image):
         #area_cvs.append(area_cv)
         #perimeters.append(perimeter)
 
-    return number,width, height, area, orientation,area_cvs,perimeters,masks
+    return number,width, height, area, orientation, masks
 
 def visualize_prediction(predictor,image):
 

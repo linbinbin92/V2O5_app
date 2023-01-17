@@ -198,7 +198,7 @@ if run_download_:
 
    #df = pd.merge(width, heigth, area, orientation, right_index = True,left_index = True)
 
-    number, width, height, area, orientation, area_cvs, perimeters, masks = cocomask.stats(predictor, im)
+    number, width, height, area, orientation, masks = cocomask.stats(predictor, im)
     number = list(number)
     st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
