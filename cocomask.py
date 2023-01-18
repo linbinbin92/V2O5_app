@@ -76,7 +76,7 @@ def stats(predictor,image):
     """
     predictions = predictor(image)
     masks = predictions['instances'].pred_masks
-    masks = masks.cpu().numpy().astype(np.uint8)
+    masks = masks.cpu().numpy()
     number = masks.shape
     width = []
     height = []
@@ -96,7 +96,7 @@ def stats(predictor,image):
     eccentricities = []
     for i in range(masks.shape[0]):
         mask = masks[i, :, :]
-        #mask = np.array(mask)
+        mask = np.array(mask, np.uint8)
         contours, hierarchy = cv.findContours(image=mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
 	cnt=contours[0]
         perimeter = cv.arcLength(cnt, True)
