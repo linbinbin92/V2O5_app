@@ -76,7 +76,7 @@ def stats(predictor,image):
     """
     predictions = predictor(image)
     masks = predictions['instances'].pred_masks
-    masks = masks.cpu().numpy().astype(int)
+    masks = masks.cpu().numpy().astype(np.uint8)
     number = masks.shape
     width = []
     height = []
@@ -85,13 +85,34 @@ def stats(predictor,image):
     perimeters = []
     is_convexs = []
     area_cvs = []
+    perimeters = []
+    is_convexs = []
+    aspect_ratios = []
+    angle_rotated_boundingboxs = []
+    angle_ecllipses = []
+    circularities = []
+    convexities  = []
+    solidities = []
+    eccentricities = []
     for i in range(masks.shape[0]):
         mask = masks[i, :, :]
-        #contours, hierarchy = cv.findContours(image=mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
-	#cnt=contours[0]
-        #perimeter = cv.arcLength(mask, True)
-        #is_convex = cv.isContourConvex(mask)
-        #area_cv =  cv.contourArea(mask)
+        #mask = np.array(mask)
+        contours, hierarchy = cv.findContours(image=mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
+	cnt=contours[0]
+        perimeter = cv.arcLength(cnt, True)
+        is_convex = cv.isContourConvex(cnt)
+        area_cv =  cv.contourArea(cnt)
+        rect = cv.minAreaRect(cnt)
+        rect = np.array(rect)
+        aspect_ratio = np.min(rect[1])/np.max(rect[1])
+        angle_rotated_bounding_box = rect[2]
+        circularity = (4*np.pi*area_cv)/(perimeter**2)
+        hull = cv.convexHull(cnt)
+        convex_perimeter = cv.arcLength(hull,True)
+        hull_area = cv.contourArea(hull)
+        solidity =  float(area_cv)/hull_area
+        (x,y), (minor_ax,major_ax),angle_ecllipse = cv.fitEllipse(cnt)
+        eccentrcity = np.sqrt(1-(minor_ax**2/major_ax**2))
         rot, orien = rotate_image(mask)
         bbox = extract_bboxes(rot)
         bbox = bbox[0]
@@ -102,10 +123,18 @@ def stats(predictor,image):
         height.append(max(wdth, hght))
         orientation.append(orien)
         area.append(are)
-        #area_cvs.append(area_cv)
-        #perimeters.append(perimeter)
+        area_cvs.append(area_cv)
+        perimeters.append(perimeter)
+        is_convexs.append(is_convex)
+        aspect_ratios.append(aspect_ratio)
+        angle_rotated_boundingboxs.append(angle_rotated_boundingbox)
+        angle_ecllipses.append(angle_ecllipse)
+        circularities.append(circularity)
+        convexities.append(convexity)
+        solidities.append(soliditiy)
+        eccentricities.append(eccentricity)
 
-    return number,width, height, area, orientation, masks
+    return number, width, height, area, orientation, area_csvs,perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses,circularities, convexities, solidities, eccentricities,  masks
 
 def visualize_prediction(predictor,image):
 
