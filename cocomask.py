@@ -135,7 +135,7 @@ def stats(predictor,image):
         solidities.append(solidity)
         eccentricities.append(eccentricity)
 
-    return number, width, height, area, orientation, area_csvs,perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses,circularities, convexities, solidities, eccentricities,  masks
+    return number, width, height, area, orientation, area_cvs,perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses,circularities, convexities, solidities, eccentricities,  masks
 
 def visualize_prediction(predictor,image):
 
