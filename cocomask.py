@@ -78,6 +78,7 @@ def stats(predictor,image):
     masks = predictions['instances'].pred_masks
     masks = masks.cpu().numpy()
     number = masks.shape
+    particle_number=[]
     width = []
     height = []
     orientation = []
@@ -147,8 +148,9 @@ def stats(predictor,image):
         convexities.append(convexity)
         solidities.append(solidity)
         eccentricities.append(eccentricity)
+        particle_number.append(i)
 
-    return number, width, height, area, orientation, area_cvs,perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses,circularities, convexities, solidities, eccentricities,  masks
+    return particle_number, number, width, height, area, orientation, area_cvs,perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses,circularities, convexities, solidities, eccentricities,  masks
 
 def visualize_prediction(predictor,image):
 

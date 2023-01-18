@@ -169,7 +169,7 @@ if rund_statstics_:
     st.write("""This are the statistics we could provide:""")
     st.markdown('---')
 
-    number, width, height, area, orientation, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities, masks = cocomask.stats(predictor, im)
+    particle_number, number, width, height, area, orientation, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities, masks = cocomask.stats(predictor, im)
     number = list(number)
     st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
@@ -198,14 +198,14 @@ if run_download_:
 
    #df = pd.merge(width, heigth, area, orientation, right_index = True,left_index = True)
 
-    number, width, height, area, orientation, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities, masks = cocomask.stats(predictor, im)
+    particle_number, number, width, height, area, orientation, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities, masks = cocomask.stats(predictor, im)
     number = list(number)
     st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
     aspect_ratio_old = [i / j for i,j in zip(height,width)]
 
-    data = list(zip(width, height, area, orientation, aspect_ratio_old, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities))
-    df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio", "area_cvs", "perimeters", "is_convexs", "aspect_ratios", "angle_rotated_boundingboxs", "angle_ecllipses", "circularities", "convexities", "solidities", "eccentricities"])
+    data = list(zip(particle_number,width, height, area, orientation, aspect_ratio_old, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities))
+    df =  pd.DataFrame(data = data, columns =["particle_num","width", "height", "area", "orientation", "aspect_ratio", "area_cvs", "perimeters", "is_convexs", "aspect_ratios", "angle_rotated_boundingboxs", "angle_ecllipses", "circularities", "convexities", "solidities", "eccentricities"])
 
     csv = df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
