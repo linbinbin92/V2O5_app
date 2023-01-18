@@ -169,7 +169,7 @@ if rund_statstics_:
     st.write("""This are the statistics we could provide:""")
     st.markdown('---')
 
-    number, width, height, area, orientation = cocomask.stats(predictor, im)
+    number, width, height, area, orientation, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities, masks = cocomask.stats(predictor, im)
     number = list(number)
     st.write("""In this figure of image size {}x{} we have found __{}__ particles :""".format(number[1],number[2], number[0]))
 
