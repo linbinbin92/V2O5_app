@@ -105,7 +105,7 @@ def stats(predictor,image):
         rect = cv.minAreaRect(cnt)
         rect = list(rect)
         aspect_ratio = np.min(rect[1])/np.max(rect[1])
-        angle_rotated_bounding_box = rect[2]
+        angle_rotated_boundingbox = rect[2]
         circularity = (4*np.pi*area_cv)/(perimeter**2)
         hull = cv.convexHull(cnt)
         convex_perimeter = cv.arcLength(hull,True)
