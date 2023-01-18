@@ -112,7 +112,10 @@ def stats(predictor,image):
             circularity = 99999
         hull = cv.convexHull(cnt)
         convex_perimeter = cv.arcLength(hull,True)
-        convexity = convex_perimeter/perimeter
+        try:
+            convexity = convex_perimeter/perimeter
+        except ZeroDivisionError:
+            convexity = 99999
         hull_area = cv.contourArea(hull)
         try:
             solidity =  float(area_cv)/hull_area
