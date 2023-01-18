@@ -205,7 +205,7 @@ if run_download_:
     aspect_ratio_old = [i / j for i,j in zip(height,width)]
 
     data = list(zip(width, height, area, orientation, aspect_ratio_old, area_cvs, perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses, circularities, convexities, solidities, eccentricities))
-    df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio", "area_cvs", "perimeters", "is_convexs", "aspect_ratios", "angle_rotated_boundingboxs", "angle_ecllipses", "circularities", "convexities", "solidities", "eccentricities")
+    df =  pd.DataFrame(data = data, columns =["width", "height", "area", "orientation", "aspect_ratio", "area_cvs", "perimeters", "is_convexs", "aspect_ratios", "angle_rotated_boundingboxs", "angle_ecllipses", "circularities", "convexities", "solidities", "eccentricities"])
 
     csv = df.to_csv(index=False)
     st.download_button("Download the statistics", csv)
