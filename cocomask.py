@@ -98,7 +98,7 @@ def stats(predictor,image):
         mask = masks[i, :, :]
         mask = np.array(mask, np.uint8)
         contours, hierarchy = cv.findContours(image=mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
-	cnt=contours[0]
+        cnt=contours[0]
         perimeter = cv.arcLength(cnt, True)
         is_convex = cv.isContourConvex(cnt)
         area_cv =  cv.contourArea(cnt)
