@@ -109,6 +109,7 @@ def stats(predictor,image):
         circularity = (4*np.pi*area_cv)/(perimeter**2)
         hull = cv.convexHull(cnt)
         convex_perimeter = cv.arcLength(hull,True)
+        convexity = convex_perimeter/perimeter
         hull_area = cv.contourArea(hull)
         solidity =  float(area_cv)/hull_area
         (x,y), (minor_ax,major_ax),angle_ecllipse = cv.fitEllipse(cnt)
