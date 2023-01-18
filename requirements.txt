@@ -1,13 +1,13 @@
-opencv-python-headless==4.4.0.40
+opencv-python-headless
 matplotlib==3.3.4
-numpy==1.19.0
+numpy
 pandas
-pycocotools==2.0.2
+pycocotools
 scikit-image
 seaborn==0.11.1
 streamlit
 # Torch
---find-links https://download.pytorch.org/whl/torch_stable.html
+#--find-links https://download.pytorch.org/whl/torch_stable.html
 torch==1.10
 torchvision
 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.10/index.html
