@@ -118,7 +118,7 @@ def stats(predictor,image):
         try:
             (x,y), (minor_ax,major_ax),angle_ecllipse = cv.fitEllipse(cnt)
         except:
-            minor_ax, major_ax, angle_ecllipse = 99999
+            minor_ax, major_ax, angle_ecllipse = 99999, 99999, 99999
 
         eccentricity = np.sqrt(1-(minor_ax**2/major_ax**2))
         rot, orien = rotate_image(mask)
