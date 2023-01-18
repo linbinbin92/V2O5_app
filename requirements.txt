@@ -1,6 +1,6 @@
 opencv-python-headless
 matplotlib==3.3.4
-numpy==1.22.1
+numpy==1.24.1
 pandas
 pycocotools==2.0.2
 scikit-image
