@@ -113,7 +113,7 @@ def stats(predictor,image):
         hull_area = cv.contourArea(hull)
         solidity =  float(area_cv)/hull_area
         (x,y), (minor_ax,major_ax),angle_ecllipse = cv.fitEllipse(cnt)
-        eccentrcity = np.sqrt(1-(minor_ax**2/major_ax**2))
+        eccentricity = np.sqrt(1-(minor_ax**2/major_ax**2))
         rot, orien = rotate_image(mask)
         bbox = extract_bboxes(rot)
         bbox = bbox[0]
@@ -132,7 +132,7 @@ def stats(predictor,image):
         angle_ecllipses.append(angle_ecllipse)
         circularities.append(circularity)
         convexities.append(convexity)
-        solidities.append(soliditiy)
+        solidities.append(solidity)
         eccentricities.append(eccentricity)
 
     return number, width, height, area, orientation, area_csvs,perimeters, is_convexs, aspect_ratios, angle_rotated_boundingboxs, angle_ecllipses,circularities, convexities, solidities, eccentricities,  masks
