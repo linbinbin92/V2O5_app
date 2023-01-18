@@ -111,7 +111,10 @@ def stats(predictor,image):
         convex_perimeter = cv.arcLength(hull,True)
         convexity = convex_perimeter/perimeter
         hull_area = cv.contourArea(hull)
-        solidity =  float(area_cv)/hull_area
+        try:
+            solidity =  float(area_cv)/hull_area
+        except ZeroDivisionError:
+            solidity = 0
         (x,y), (minor_ax,major_ax),angle_ecllipse = cv.fitEllipse(cnt)
         eccentricity = np.sqrt(1-(minor_ax**2/major_ax**2))
         rot, orien = rotate_image(mask)
