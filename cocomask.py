@@ -106,7 +106,7 @@ def stats(predictor,image):
         rect = list(rect)
         aspect_ratio = np.min(rect[1])/np.max(rect[1])
         angle_rotated_boundingbox = rect[2]
-	try:
+        try:
             circularity = (4*np.pi*area_cv)/(perimeter**2)
         except ZeroDivisionError:
             circularity = 99999
