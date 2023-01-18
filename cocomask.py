@@ -103,7 +103,7 @@ def stats(predictor,image):
         is_convex = cv.isContourConvex(cnt)
         area_cv =  cv.contourArea(cnt)
         rect = cv.minAreaRect(cnt)
-        rect = np.array(rect)
+        rect = list(rect)
         aspect_ratio = np.min(rect[1])/np.max(rect[1])
         angle_rotated_bounding_box = rect[2]
         circularity = (4*np.pi*area_cv)/(perimeter**2)
