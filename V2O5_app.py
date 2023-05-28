@@ -96,7 +96,7 @@ with col2:
 
 #st.image('./logo_mfm.png')
 #st.write("""# Data-driven model by MFM """)
-st.markdown('---')
+st.markdown('--this version contains new tests-')
 st.write("""
 ## This web-based interative tool provides a deep-learning-based *image* analysis for nanowires on the fly.
 - To use the tool, upload the image and select the functionality.
